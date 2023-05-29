@@ -18,9 +18,20 @@
 <script>
         var socket = io();
         socket.emit('message', 'Hi');
+        // Listen for the response from the server
+            socket.on('value', (data) => {
+                console.log('Received value:', data);
+                const jsonObject = JSON.parse(data);
+                const myParagraph = document.getElementById('myParagraph');
+               myParagraph.innerHTML += '<br><br>' + jsonObject['tagInventoryEvent']['epcHex'];
+            });
 </script>
 
-    <!-- <script src="/script.js"></script> -->
+   <p id="myParagraph">
+
+   </p>
+
+
 </body>
 
 </html>
