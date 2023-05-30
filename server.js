@@ -17,6 +17,7 @@ app.get('/sever', (req, res) => {
 
 app.post('/webhook', (req, res) => {
      
+    res.send(req.body);
      // print request body
    console.log('Received webhook payload:', req.body);
 });
