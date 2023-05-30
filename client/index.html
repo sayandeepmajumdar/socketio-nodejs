@@ -23,7 +23,7 @@
                 console.log('Received value:', data);
                 const jsonObject = JSON.parse(data);
                 const myParagraph = document.getElementById('myParagraph');
-               myParagraph.innerHTML += '<br><br>' + jsonObject['tagInventoryEvent']['epcHex'];
+               myParagraph.innerHTML += '<br><br>' + jsonObject['tagInventoryEvent']['epc'];
             });
 </script>
 

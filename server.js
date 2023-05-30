@@ -15,8 +15,9 @@ app.get('/sever', (req, res) => {
 });
 
 app.post('/webhook', (req, res) => {
+     
+     // print request body
    console.log('Received webhook payload:', req.body);
-    res.send("Printed");
 });
 
 const PORT = 5005;
