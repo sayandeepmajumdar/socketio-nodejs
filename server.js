@@ -25,51 +25,51 @@ const server = app.listen(PORT, () => {
     console.log('Server running! '+ PORT)
 });
 
-const io = socketio(server)
+// const io = socketio(server)
 
-io.on('connection', (socket) => {
-    console.log(`New connection: ${socket.id}`);
+// io.on('connection', (socket) => {
+//     console.log(`New connection: ${socket.id}`);
 
-    // socket.emit('notification', 'Thanks for connecting to Codedamn!')
+//     // socket.emit('notification', 'Thanks for connecting to Codedamn!')
 
-    socket.on('message', (data) => {
-        console.log(`New message from ${socket.id}: ${data}`);
+//     socket.on('message', (data) => {
+//         console.log(`New message from ${socket.id}: ${data}`);
 
-        const url = 'http://impinj-15-22-aa.local/api/v1/data/stream';
-        const request = http.get(url, (response) => {
-                    // Check if the response is successful (HTTP 200 status code)
-                    if (response.statusCode === 200) {
-                        // Handle incoming data
-                        response.on('data', (chunk) => {
-                        // Convert the chunk buffer to a string
-                        const chunkString = chunk.toString();
-                        console.log("Data:" + chunkString);
+//         const url = 'http://impinj-15-22-aa.local/api/v1/data/stream';
+//         const request = http.get(url, (response) => {
+//                     // Check if the response is successful (HTTP 200 status code)
+//                     if (response.statusCode === 200) {
+//                         // Handle incoming data
+//                         response.on('data', (chunk) => {
+//                         // Convert the chunk buffer to a string
+//                         const chunkString = chunk.toString();
+//                         console.log("Data:" + chunkString);
 
-                        // Emit the data to all connected clients
-                        // io.emit('streamData', "chunkString");
-                         socket.emit('value', chunkString);
-                        });
+//                         // Emit the data to all connected clients
+//                         // io.emit('streamData', "chunkString");
+//                          socket.emit('value', chunkString);
+//                         });
 
-                        // Handle end of stream
-                        response.on('end', () => {
-                        console.log('Stream ended');
-                        });
+//                         // Handle end of stream
+//                         response.on('end', () => {
+//                         console.log('Stream ended');
+//                         });
 
-                        // Handle stream error
-                        response.on('error', (error) => {
-                        console.error('Stream error:', error);
-                        });
-                    } else {
-                        console.error('Request failed with status code:', response.statusCode);
-                    }
-                    });
+//                         // Handle stream error
+//                         response.on('error', (error) => {
+//                         console.error('Stream error:', error);
+//                         });
+//                     } else {
+//                         console.error('Request failed with status code:', response.statusCode);
+//                     }
+//                     });
 
-    })
+//     })
    
 
-//     socket.on('get-value', (data) => {
-//     // Send the value back to the client
-//     socket.emit('value', "Hello World");
-//   });
+// //     socket.on('get-value', (data) => {
+// //     // Send the value back to the client
+// //     socket.emit('value', "Hello World");
+// //   });
 
-})
+// })
